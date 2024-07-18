@@ -4,7 +4,7 @@ export async function createTodo (user, task) {
         is_done: false,
     };
 
-    await fetch({
+  const response = await fetch({
         url: `https://playground.4geeks.com/todo/users/${user}`,
         method: 'POST',
         headers: {
@@ -12,4 +12,10 @@ export async function createTodo (user, task) {
         },
         body: JSON.stringify(todo)
     });
+
+    if (response.status === 201) {
+        const data = await response.json();
+        return data;
+    }
+    return null;
 }
