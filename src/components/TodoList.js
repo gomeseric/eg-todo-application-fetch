@@ -19,9 +19,9 @@ export function TodoList() {
         setTask(ev.target.value);
     };
 
-    const handleEnter = (ev) => {
+    const handleEnter = async (ev) => {
         if (ev.key === "Enter" && task.trim() !== "") {
-            const newTodo = { label: task.trim(), is_done: false };
+            const newTodo = await createTodo(user, task.trim());
             setTodos([newTodo, ...todos]);
             setTask("");
         }

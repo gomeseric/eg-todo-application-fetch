@@ -10,7 +10,7 @@ export async function createTodo (user, task) {
         headers: {
         "Content-type": "application/json",
         },
-        body: JSON.stringify(todo)
+        body: JSON.stringify(todo),
     });
 
     if (response.status === 201) {
