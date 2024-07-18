@@ -1,5 +1,6 @@
 "use client";
 
+import { deleteTodo } from "@/services/deleteTodo";
 import { getTodos } from "@/services/getTodos";
 import { useEffect, useState } from "react";
 
@@ -30,8 +31,10 @@ export function TodoList() {
     };
 
     const handleDelete = (index) => {
+        const todo = todos[index];
         const newTodos = todos.filter((todo, i) => i !== index);
         setTodos(newTodos);
+        deleteTodo(todo.id);
     };
 
     return (
